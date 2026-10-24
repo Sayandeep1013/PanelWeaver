@@ -285,12 +285,12 @@ Rough codespace time from M1 on: ~50–75 h, more than one month's free 60 h. Sp
 
 | | Decision | Status |
 |---|---|---|
-| D-01 | Input scope: manga-only vs manhwa/webtoon | Register recommends manga-only; the demo is manga. **Confirm** |
-| D-02 | Distribution: personal/research vs commercial | **Open.** Decides whether Magi (non-commercial) can be used |
+| D-01 | Input scope: manga-only vs manhwa/webtoon | **Decided 2026-10-24: manga-only** (register decision log) |
+| D-02 | Distribution: personal/research vs commercial | **Decided 2026-10-24: personal/research.** Magi may be used; keep a commercial fallback recorded per capability |
 | D-04 | Narration strategy | **Decided 2026-10-24: hybrid.** Record it in the register's decision log |
 | Source | Which manga for the demo | **Open: ask before M1.** Freely-usable: *Give My Regards to Black Jack* (Shuho Sato allowed free secondary use; **verify current terms and whether they cover any English translation**); *Pepper&Carrot* (CC-BY 4.0 webcomic, a clean test source). A popular copyrighted manga: better showcase, but the demo stays private or unlisted (§96, §118, C-14). Japanese originals need Japanese OCR and translation (C-11) |
 | D-08 | Music and SFX source | Open. The licence must allow use; record each track |
-| Corpus size | How big a first eval corpus (M0, measure 1) | Open. Agree before M0 |
+| Corpus size | How big a first eval corpus (M0, measure 1) | **Decided 2026-10-24: small first**, ~3 chapters (~60 pages), 1 reference video; grow toward 20 chapters as M2 needs. Sources allowed: *Give My Regards to Black Jack* (after its terms are verified) and the owner's own chapters. Plan in `docs/EVAL_CORPUS.md` |
 
 ---
 

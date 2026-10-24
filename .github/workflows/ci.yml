@@ -1,0 +1,30 @@
+# CI only: lint, tests, and the render QA gate on tiny synthetic fixtures.
+# Never render real videos or run the pipeline here (docs/BUILD_GUIDE.md §2.2).
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: ruff format --check .
+      - name: Validate eval annotations
+        run: |
+          files=$(find eval/annotations -name '*.json' 2>/dev/null)
+          if [ -n "$files" ]; then panelweaver validate $files; else echo "no annotations yet"; fi
+      - run: pytest -q
+        env:
+          PW_REQUIRE_FFMPEG: "1"

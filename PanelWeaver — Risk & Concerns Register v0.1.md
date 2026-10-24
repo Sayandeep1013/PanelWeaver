@@ -696,16 +696,16 @@ Ordered by dependency. **Measures 1–4 are blocking; nothing should be built un
 
 | ID | Decision | Options | Chosen | Rationale | Owner | Date | Reversible? |
 |---|---|---|---|---|---|---|---|
-| D-01 | Input scope (Q1) | manga-only / manhwa+webtoon | | | | | Yes — schema is discriminated union |
-| D-02 | Distribution posture (Q2) | research / commercial | | | | | **No** — determines all licensing |
+| D-01 | Input scope (Q1) | manga-only / manhwa+webtoon | **Manga-only** | Bordered RTL manga is the well-served case (C-04); the demo is manga. Schema keeps a `Panel` / `ScrollSegment` union so webtoon can be added later | Owner (Sayandeep1013) | 2026-10-24 | Yes — schema is discriminated union |
+| D-02 | Distribution posture (Q2) | research / commercial | **Personal / research** | Development demo on free tiers. Research-only models (e.g. Magi v3) are allowed; the demo stays private/unlisted unless the source allows sharing. Detectors stay behind capability interfaces with a commercial fallback recorded in `docs/LICENSE_REGISTER.md` | Owner (Sayandeep1013) | 2026-10-24 | **No** — determines all licensing |
 | D-03 | Primary differentiator (C-02) | (a) story-engine / (b) commodity | | | | | No |
-| D-04 | Narration strategy (C-11) | commentary / translate / hybrid | | | | | Yes |
+| D-04 | Narration strategy (C-11) | commentary / translate / hybrid | **Hybrid** | One narrator retells the story; key lines are spoken in character voices (spec §37). Clears the §102 bar better than translate-and-narrate | Owner (Sayandeep1013) | 2026-10-24 | Yes |
 | D-05 | OCR engine | | | | | | Yes — behind interface |
 | D-06 | TTS provider | | | | | | Yes — behind interface |
 | D-07 | Panel detection approach | | | | | | Partially |
 | D-08 | Music / SFX source (C-14) | e.g. Epidemic Sound Partner API (all-platform commercial licence incl. public performance rights) | | | | | Yes |
 | D-09 | Subtitle font + burn-in path | | | | | | Yes |
-| D-10 | v1 repo structure (C-13) | single package / monorepo | | | | | Yes — early |
+| D-10 | v1 repo structure (C-13) | single package / monorepo | **Single package** | One Python package (`panelweaver`), Pydantic schemas, SQLite, a CLI. Nothing else (measure 10) | Owner, via `docs/BUILD_GUIDE.md` M0 | 2026-10-24 | Yes — early |
 
 ---
 

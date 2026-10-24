@@ -30,3 +30,4 @@ pull/
 
 # Local agent state
 .sisyphus/
+.playwright-mcp/
