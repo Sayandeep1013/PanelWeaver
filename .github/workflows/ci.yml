@@ -23,7 +23,7 @@ jobs:
       - run: ruff format --check .
       - name: Validate eval annotations
         run: |
-          files=$(find eval/annotations -name '*.json' 2>/dev/null)
+          files=$(find eval/annotations -name '*.json' 2>/dev/null || true)
           if [ -n "$files" ]; then panelweaver validate $files; else echo "no annotations yet"; fi
       - run: pytest -q
         env:
