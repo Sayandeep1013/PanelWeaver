@@ -21,6 +21,7 @@ dev = [
 cv = [
     "numpy>=1.26",
     "opencv-python-headless>=4.9",
+    "pillow>=10",
     "pypdfium2>=4.30",
 ]
 
