@@ -63,8 +63,22 @@ These live in `panelweaver.eval`, with tests on synthetic fixtures:
 | `speaker_accuracy` | Share of labelled bubbles with the right speaker | U5 |
 | `shot_stats` | Median shot duration, coefficient of variation, motion mix (from a timeline or reference labels) | V2–V5 |
 
-## 6. Open items
+## 6. First corpus: chosen chapters
 
-- [ ] Verify the Black Jack terms (licence research in progress), then choose its chapters.
-- [ ] Owner: which of your own chapters, and in what language?
+Source: *Give My Regards to Black Jack*, official **English** vol 1 (`enbj001.pdf` from densho810.com/free/, downloaded 2026-10-24, in `workspace/corpus/blackjack/src/`). Terms verified (`docs/LICENSE_REGISTER.md` §2): text may be committed (`text_committable: true`). Vol 1 has none of the JASRAC lyric pages.
+
+The PDF has 209 single portrait pages (1414×2000 pt). **The English edition is not mirrored**: the Japanese signs read correctly and the dialogue runs RTL, so `reading_direction: rtl`, `language: en`.
+
+| chapter_id | Episode | PDF pages (0-based, approx.) | Pages |
+|---|---|---|---|
+| `bj1-ep02` | Ep.02 "Eels and Godhands" | 61–~83 | ~23 |
+| `bj1-ep03` | Ep.03 | 87–~107 | ~21 |
+| `bj1-ep06` | "The First Lie" | 167–~185 | ~19 |
+
+Total ~63 pages. Exact end pages get fixed when the pages are extracted (blank divider pages are excluded). Ep.01 (54 pages) is skipped as too long for the first round. Between them, the three chapters have a full-page title splash, dense dialogue grids, black-bordered pages and wide establishing panels.
+
+## 7. Open items
+
+- [x] Verify the Black Jack terms, then choose its chapters.
+- [ ] Owner: still add your own chapters to this first round, or keep them for later?
 - [ ] Choose the reference video. It has to be a human-made recap of one corpus chapter, and downloading it counts as source material (ask the owner first).

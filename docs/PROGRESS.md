@@ -25,7 +25,20 @@ Newest first. Each entry: what was done, what was measured, decisions, hours use
 - Codespace wake + venv + install + lint + tests in one `scripts/cs run`: **55 s**.
 - Test suite: 18 s (most of it ffmpeg fixtures).
 
+**Also done (later in the session)**
+- **Measure 2: `docs/LICENSE_REGISTER.md`**, from two research passes over primary sources. Key findings:
+  - Magi is allowed under D-02; the commercial route is by email only.
+  - The register's "2.91% CER" for PaddleOCR-VL-For-Manga isn't on its card (unverified); JMangaBench_Mixed returns 401.
+  - `kokoro` pulls GPL phonemizer/espeak (only matters if we distribute); Piper is now GPL; the lessac voice is research-only.
+  - Manga109 needs an institutional email. Manga109-s pages may never appear in a video.
+  - **Pepper&Carrot now prohibits AI derivations: avoid.**
+  - **Gemini free tier uses inputs for training, with human review: owner decision before M1.** Groq's free plan has no vision model.
+  - Kaggle is personal/non-commercial only. Modal appears to need a card.
+  - D-08 recommendation: incompetech (CC BY) + Freesound CC0.
+- **Black Jack terms verified** at densho810.com/free/ (commercial OK, adaptations OK; credit "Give My Regards to Black Jack / SHUHO SATO"; email info@densho810.com within 1 month of publishing). **English vol 1 downloaded** to `workspace/corpus/blackjack/src/` (420 MB PDF, 209 pages, ~2 min). The EN edition is not mirrored (RTL). Chapters picked: Ep.02, Ep.03, "The First Lie" (~63 pages), see `docs/EVAL_CORPUS.md` §6.
+- OpenCV panel pre-labeller (`panelweaver.corpus.prelabel`) with an RTL reading-order heuristic. Checked on a synthetic page by looking at the overlay: 3 of 4 rows exact, RTL order right, and a balloon crossing a gutter merges two panels (the expected C-04 failure, now pinned by a test).
+
 **Next**
-- License Register (measure 2) from the licence research → `docs/LICENSE_REGISTER.md`.
-- Verify the Black Jack terms, then choose chapters; owner picks their own chapters.
-- Pre-labeller (OpenCV gutters) + labelling page → label the first corpus.
+- Labelling page (served on port 8000) + page extraction for the 3 chapters → pre-label → owner corrects → `eval/annotations/blackjack/*.json`.
+- Score the raw pre-labeller against the corrected labels (first measure 5 data point).
+- Owner: OK on the camera-vocabulary deviation; Gemini free-tier data use; own chapters now or later.
