@@ -60,7 +60,7 @@ Status: **use** = chosen · **candidate** = may be used, not chosen yet · **avo
 
 | Service | Use | Terms | Allowed? | Commercial? | Limits and conditions that matter | Status |
 |---|---|---|---|---|---|---|
-| **Gemini API**, unpaid tier | VLM panel reading, script | Gemini API Additional Terms (2026-04-28) | Yes | Not prohibited | **Free-tier inputs and outputs are used to improve Google products, and humans may read them** (quote below). 18+, supported regions. Rate limits aren't published, so read them off AI Studio. **Owner decision before M1** | candidate (M1) |
+| **Gemini API**, unpaid tier | VLM panel reading, script | Gemini API Additional Terms (2026-04-28) | Yes | Not prohibited | **Free-tier inputs and outputs are used to improve Google products, and humans may read them** (quote below). 18+, supported regions. Rate limits aren't published, so read them off AI Studio. Accepted for Black Jack pages (D-11, 2026-10-25) | **use** (M1) |
 | Groq, free plan | Text LLM steps; Whisper ASR | Groq Services Agreement | Yes | Yes | **No vision model on the free plan.** No training on inputs. e.g. gpt-oss-120b 30 RPM / 1K RPD; whisper-large-v3 20 RPM / 2K RPD | candidate |
 | GitHub Codespaces | Development | GitHub billing | Yes | Yes | 120 **core**-hours/month = 60 h on 2 cores; 15 GB-month storage | **use** |
 | Kaggle Notebooks | Batch GPU (Magi, upscaling) | Kaggle ToU (2025-06-22) | Yes | **No: "personal, non-commercial use" only** | ~30 GPU h/week, 12 h sessions, idle timeout 20 or 60 min (docs disagree) | candidate |
@@ -85,5 +85,6 @@ Per-track and per-file rows get added here when an asset is chosen (M5).
 
 ## 6. Open items
 
-- **PanelWeaver's own licence:** the repo is public but has **no LICENSE file**, which means "all rights reserved". Owner decision (not blocking M0).
+- **PanelWeaver's own licence:** MIT, added 2026-10-25 (code and docs; the Black Jack credit and terms still apply to anything derived from its pages).
+- **Publishing the demo:** the video must show "Give My Regards to Black Jack / SHUHO SATO"; email info@densho810.com within 1 month; incompetech credits go in the description.
 - Unverified items to resolve before first use: Real-ESRGAN anime weights, the PaddleOCR-VL-For-Manga CER claim, the ERNIE base licence, and Manga109-s eligibility for an individual.

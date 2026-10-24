@@ -80,5 +80,5 @@ Total ~63 pages. Exact end pages get fixed when the pages are extracted (blank d
 ## 7. Open items
 
 - [x] Verify the Black Jack terms, then choose its chapters.
-- [ ] Owner: still add your own chapters to this first round, or keep them for later?
+- [x] Own chapters: not in the first round (decided 2026-10-25). Black Jack is both the corpus and the demo source (D-12). No scanlations.
 - [ ] Choose the reference video. It has to be a human-made recap of one corpus chapter, and downloading it counts as source material (ask the owner first).

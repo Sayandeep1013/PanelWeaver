@@ -1,7 +1,7 @@
 # PanelWeaver — Success Criteria and Camera Vocabulary
 
 **Week 0, measure 4** (register C-05). Turns spec §102 into numbers and fixes the closed camera vocabulary.
-**Status:** draft, 2026-10-24. The numbers are **starting values**: recalibrate after the first 3 renders. Every change goes in the change log at the bottom, with a date and a reason.
+**Status:** adopted 2026-10-25. The numbers are **starting values**: recalibrate after the first 3 renders. Every change goes in the change log at the bottom, with a date and a reason.
 
 ---
 
@@ -97,7 +97,7 @@ v1 has **no free-form camera planning**. The visual director (M5) picks one entr
 | `crossfade-to-region` | transition | Dissolve to the next framing: a region of the same panel, or the next panel | duration **0.4–0.8 s** |
 | `fade` | transition | Fade from or to black, **only** at the video's start and end | 0.5–1.0 s |
 
-**Deviation from the register, needs the owner's OK.** The register lists `pan-left` and `pan-right` as separate entries, and has no `fade`. Its list comes from make-motion-comic, which renders 9:16, where wide panels are panned sideways. We render 16:9, and manga panels are mostly taller than the frame, so vertical pans are the common case. Here the two pans become one `pan` entry with a direction parameter, and the freed slot goes to `fade` for the opening and closing. The vocabulary stays closed at 8.
+**Deviation from the register, approved 2026-10-25.** The register lists `pan-left` and `pan-right` as separate entries, and has no `fade`. Its list comes from make-motion-comic, which renders 9:16, where wide panels are panned sideways. We render 16:9, and manga panels are mostly taller than the frame, so vertical pans are the common case. Here the two pans become one `pan` entry with a direction parameter, and the freed slot goes to `fade` for the opening and closing. The vocabulary stays closed at 8.
 
 ### 2.2 Rules that apply to every shot
 
@@ -131,3 +131,4 @@ Each beat carries one intent from spec §75. The first motion listed is the defa
 | Date | Change | Why |
 |---|---|---|
 | 2026-10-24 | First draft | Week 0 measure 4 |
+| 2026-10-25 | Adopted, including `pan` with a direction and `fade` (owner delegated the call) | 16:9 output needs vertical pans |

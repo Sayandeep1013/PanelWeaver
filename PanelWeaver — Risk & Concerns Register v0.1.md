@@ -698,13 +698,15 @@ Ordered by dependency. **Measures 1–4 are blocking; nothing should be built un
 |---|---|---|---|---|---|---|---|
 | D-01 | Input scope (Q1) | manga-only / manhwa+webtoon | **Manga-only** | Bordered RTL manga is the well-served case (C-04); the demo is manga. Schema keeps a `Panel` / `ScrollSegment` union so webtoon can be added later | Owner (Sayandeep1013) | 2026-10-24 | Yes — schema is discriminated union |
 | D-02 | Distribution posture (Q2) | research / commercial | **Personal / research** | Development demo on free tiers. Research-only models (e.g. Magi v3) are allowed; the demo stays private/unlisted unless the source allows sharing. Detectors stay behind capability interfaces with a commercial fallback recorded in `docs/LICENSE_REGISTER.md` | Owner (Sayandeep1013) | 2026-10-24 | **No** — determines all licensing |
-| D-03 | Primary differentiator (C-02) | (a) story-engine / (b) commodity | | | | | No |
+| D-03 | Primary differentiator (C-02) | (a) story-engine / (b) commodity | **(a) Story-engine first** | A free, public, non-commercial showcase: the story engine (M3) is the part worth proving. Commodity layers stay as simple as the eval bar allows | Owner (delegated to Claude) | 2026-10-25 | No |
 | D-04 | Narration strategy (C-11) | commentary / translate / hybrid | **Hybrid** | One narrator retells the story; key lines are spoken in character voices (spec §37). Clears the §102 bar better than translate-and-narrate | Owner (Sayandeep1013) | 2026-10-24 | Yes |
 | D-05 | OCR engine | | | | | | Yes — behind interface |
 | D-06 | TTS provider | | | | | | Yes — behind interface |
 | D-07 | Panel detection approach | | | | | | Partially |
-| D-08 | Music / SFX source (C-14) | e.g. Epidemic Sound Partner API (all-platform commercial licence incl. public performance rights) | | | | | Yes |
-| D-09 | Subtitle font + burn-in path | | | | | | Yes |
+| D-08 | Music / SFX source (C-14) | e.g. Epidemic Sound Partner API (all-platform commercial licence incl. public performance rights) | **Music: Kevin MacLeod / incompetech (CC BY 4.0). SFX: Freesound CC0 (CC BY with credit)** | Free, stable primary-source licences, fine for a public video; Epidemic is paid, and Pixabay risks Content ID claims. Every track and file is logged in `docs/LICENSE_REGISTER.md` | Owner (delegated to Claude) | 2026-10-25 | Yes |
+| D-09 | Subtitle font + burn-in path | | **Noto Sans CJK (OFL 1.1), burned in via ASS** | Already in the codespace image, covers Latin + Japanese; ASS allows positioning (spec §53) | Owner (delegated to Claude) | 2026-10-25 | Yes |
+| D-11 | Runtime VLM/LLM provider and data use | Gemini free tier / paid / local | **Gemini free tier** (personal key) | Free tier uses inputs for training, with human review. Acceptable because the source (Black Jack) is free-to-use and nothing personal is sent. Revisit if a source isn't freely licensed | Owner (delegated to Claude) | 2026-10-25 | Yes |
+| D-12 | Demo source | Black Jack / fan scans / own chapters | ***Give My Regards to Black Jack*, official English** (vol 1, more volumes if 15–20 min needs it) | Real manga, author-granted free use incl. adaptations, so the demo can be **public**. Scanlations rejected: unauthorised copies risk a DMCA takedown of the public repo and strikes on the video, regardless of money | Owner (delegated to Claude) | 2026-10-25 | Yes |
 | D-10 | v1 repo structure (C-13) | single package / monorepo | **Single package** | One Python package (`panelweaver`), Pydantic schemas, SQLite, a CLI. Nothing else (measure 10) | Owner, via `docs/BUILD_GUIDE.md` M0 | 2026-10-24 | Yes — early |
 
 ---

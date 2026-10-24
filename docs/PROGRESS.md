@@ -6,6 +6,19 @@ Newest first. Each entry: what was done, what was measured, decisions, hours use
 
 ---
 
+## 2026-10-25 — Decisions delegated to Claude
+
+The owner asked Claude to make the open calls. This is a free, public, non-commercial showcase.
+- **D-12 demo source: *Give My Regards to Black Jack*, official English.** Scanlations / "fan manga" rejected: unauthorised copies risk a DMCA takedown of the public repo and strikes on the video, whether or not money is made. Black Jack's terms allow a **public** demo.
+- D-03 story-engine first · D-08 incompetech + Freesound CC0 · D-09 Noto Sans CJK via ASS · D-11 Gemini free tier (fine for free-licensed pages).
+- Camera vocabulary adopted (`docs/SUCCESS_CRITERIA.md` is now "adopted"). Own chapters: not needed.
+- **Repo licence: MIT** (`LICENSE`). None of the owner's public repos had a licence, which legally means "all rights reserved".
+- Manhwa stays out of v1 (D-01 is reversible). Revisit after the manga demo works, with a freely licensed manhwa.
+
+**M0 status:** measures 2, 3, 4, 7, 8, 10 done; measure 1 (labelled corpus) remains.
+
+---
+
 ## 2026-10-24 — Session 1: M0 started (PC setup)
 
 **Decisions (owner)**
