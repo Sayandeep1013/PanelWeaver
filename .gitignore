@@ -1,0 +1,25 @@
+# Source material and outputs: never commit (public repo, copyrighted artwork)
+workspace/
+renders/
+*.cbz
+*.cbr
+
+# Secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Caches and model weights
+.cache/
+models/
+*.onnx
+*.safetensors
+*.pt
+*.pth
