@@ -2,7 +2,7 @@
 
 Newest first. Each entry: what was done, what was measured, decisions, hours used, what's next.
 
-**Codespace hours this month (budget ~60 h on 2 cores):** ~0.2 h
+**Codespace hours this month (budget ~60 h on 2 cores):** ~0.4 h
 
 ---
 
@@ -18,7 +18,7 @@ Newest first. Each entry: what was done, what was measured, decisions, hours use
 - Measures 7, 8, 10 (scaffold): package `panelweaver` (`src/`), `schemas/envelope.py` (stage result envelope), `schemas/annotation.py` (corpus schema), `eval/metrics.py`, `qa/render.py` (render QA gate), `store.py` (SQLite), CLI (`panelweaver qa-render`, `panelweaver validate`), CI workflow.
 
 **Verified**
-- `ruff` clean, **20/20 tests pass** in the codespace (Python 3.12.11, ffmpeg 5.1).
+- `ruff` clean, **22/22 tests pass** in the codespace (Python 3.12.11, ffmpeg 5.1) and **CI is green on main** (GitHub Actions, 44 s).
 - Render QA gate on 20 s, 540p synthetic fixtures. Clean file: all checks PASS, −16.1 LUFS, −14.6 dBTP, A/V duration diff 0 ms. Broken file: it finds the planted black gap (8.00–9.03 s) and silence (12.01–14.02 s) at the right times.
 
 **Measured**
