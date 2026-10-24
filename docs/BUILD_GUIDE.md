@@ -97,7 +97,7 @@ A GitHub Codespace: a Linux VM in GitHub's cloud, opened in the browser (VS Code
 - Claude Code (native installer)
 - Port 8000 forwarded for previews
 
-If something is missing, install it and **add it to `.devcontainer/setup.sh`** so the next codespace has it too.
+If something is missing, install it and add it to the setup so the next codespace has it too: system packages (apt) go in `.devcontainer/Dockerfile`, user-level tools in `.devcontainer/setup.sh`. The base image's Yarn apt source is broken and removed in the Dockerfile; keep that line.
 
 ### 3.2 Limits (GitHub Free personal account; verify on GitHub's billing page)
 | Limit | Value | What it means |
