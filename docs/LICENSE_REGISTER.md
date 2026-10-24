@@ -40,13 +40,50 @@ Status: **use** = chosen · **candidate** = may be used, not chosen yet · **avo
 | Manga109 (109 vols) | Eval corpus | Custom; "academic purposes by non-commercial organizations" | **Probably not for the owner**: access needs an institutional email ("Gmail" is refused) | No | HF gate is manual, 2–3 days to a week | avoid | manga109.org/en/download.html |
 | Manga109-s (87 vols) | Eval / training corpus (later) | Custom | Yes | **Results and models only**, never the pages | **Never put Manga109-s pages in a video.** "Must not be treated as products"; publish at most 20% of a volume; no redistribution; credit Manga109-s. Access form asks for name, address and affiliation (company or university); whether an unaffiliated individual qualifies is unverified | not chosen now (owner) | huggingface.co/datasets/hal-utokyo/Manga109-s |
 | JMangaBench_Mixed | OCR benchmark | **Unverified: the repo returns HTTP 401** (private or removed) | — | — | The register cites it. The only visible sibling, `JMangaBench_Read`, is CC-BY-NC-SA-4.0. We rely on our own corpus | unavailable | huggingface.co/datasets/muscgab |
-| *Give My Regards to Black Jack* | Corpus + demo candidate | *(pending §3 research)* | | | | pending | |
+| *Give My Regards to Black Jack* (Shuho Sato), vols 1–13, JP + EN | Corpus + **demo source candidate** | Sato Manga Works free-use terms (set 2012-09-15, revised 2017-08-31) | **Yes** | **Yes** | Copying, redistribution and any adaptation (animation, spoken-word, film) without prior permission. **Must show "Give My Regards to Black Jack / SHUHO SATO"** in the video. **Email info@densho810.com within 1 month of publishing.** Official files from densho810.com/free/ only (book scans banned). Excluded: the sequel (新ブラよろ), Kindle, political use. Lyrics in vol 2 pp 35/54/150/151/153, vol 7 p 192 and vol 11 p 77 are JASRAC-managed: skip those pages. Text may be committed (`text_committable: true`). English files are offered on the same page; the terms imply but don't explicitly state they're covered | **use** (EN vol 1 downloaded 2026-10-24) | densho810.com/free/ (read by Claude 2026-10-24) |
+| Pepper&Carrot (David Revoy) | — | CC BY 4.0, plus the author's "AI derivation prohibited" statement (2026-10-08) | **Avoid** | Avoid | The author explicitly objects to AI-generated scripts and AI-animated comics based on his art. Western LTR layout anyway | avoid | peppercarrot.com/en/license/ |
 
-## 3. Software, fonts, services, music
+## 3. Software, fonts
 
-*(Second research batch in progress; filled in below when it lands.)*
+| Item | Use | Licence | Allowed? | Commercial? | Conditions / notes | Status |
+|---|---|---|---|---|---|---|
+| FFmpeg (Debian bookworm 5.1.9) | Render, mux, QA | GPL-2.0+ as built (`--enable-gpl`, x264) | Yes | Yes: called as a separate binary, our code stays non-GPL | Shipping the binary (e.g. in an image) brings GPL source and notice duties. H.264/AAC patents: unverified | **use** |
+| espeak-ng | Kokoro phoneme fallback | GPL-3.0+ | Yes | Yes (separate program / dependency) | See the `misaki` row in §1 | **use** |
+| pypdfium2 | PDF → page images (Black Jack is PDF) | Apache-2.0 / BSD-3; PDFium BSD-style | Yes | Yes | Ship licences with binary distributions | **use** |
+| PyMuPDF | — | **AGPL-3.0** or Artifex commercial | Yes | Only if everything is AGPL | Would spread AGPL to our code | avoid (use pypdfium2) |
+| Pillow · Pydantic · NumPy · SQLite · Typer | Core | MIT-CMU · MIT · BSD-3 et al. · public domain · MIT | Yes | Yes | Keep notices | **use** (Typer not used yet) |
+| opencv-python-headless | Pre-labeller, CV | Apache-2.0; wheels bundle LGPL-2.1 FFmpeg | Yes | Yes | Keep the third-party notices | **use** |
+| Noto Sans / Noto Sans CJK | Subtitles, contact sheets | SIL OFL 1.1 | Yes | Yes | Burning text into video is fine | **use** |
+| Atkinson Hyperlegible Next · Inter | Subtitle font candidates (D-09) | SIL OFL 1.1 | Yes | Yes | — | candidate |
 
-## 4. Open items
+## 4. Services (free tiers)
+
+| Service | Use | Terms | Allowed? | Commercial? | Limits and conditions that matter | Status |
+|---|---|---|---|---|---|---|
+| **Gemini API**, unpaid tier | VLM panel reading, script | Gemini API Additional Terms (2026-04-28) | Yes | Not prohibited | **Free-tier inputs and outputs are used to improve Google products, and humans may read them** (quote below). 18+, supported regions. Rate limits aren't published, so read them off AI Studio. **Owner decision before M1** | candidate (M1) |
+| Groq, free plan | Text LLM steps; Whisper ASR | Groq Services Agreement | Yes | Yes | **No vision model on the free plan.** No training on inputs. e.g. gpt-oss-120b 30 RPM / 1K RPD; whisper-large-v3 20 RPM / 2K RPD | candidate |
+| GitHub Codespaces | Development | GitHub billing | Yes | Yes | 120 **core**-hours/month = 60 h on 2 cores; 15 GB-month storage | **use** |
+| Kaggle Notebooks | Batch GPU (Magi, upscaling) | Kaggle ToU (2025-06-22) | Yes | **No: "personal, non-commercial use" only** | ~30 GPU h/week, 12 h sessions, idle timeout 20 or 60 min (docs disagree) | candidate |
+| Modal Starter | Hero shots | Modal ToS | Yes | Yes | $30/month credits, but **a payment method on file appears to be required** (guide §2.6: ask first) | candidate, needs owner OK |
+| Colab free | Backup GPU | Colab FAQ | Yes | Unverified | 12 h max; no SSH, remote desktop or web-UI-driven use | candidate |
+| Lightning AI free | ComfyUI experiments | Lightning pricing | Yes | Unverified | "Up to 30 credits" (~75 h T4); whether that's monthly is unverified | candidate |
+
+> Gemini Additional Terms: *"When you use Unpaid Services, including, for example, Google AI Studio and the unpaid quota on Gemini API, Google uses the content you submit to the Services and any generated responses to provide, improve, and develop Google products and services and machine learning technologies … human reviewers may read, annotate, and process your API input and output. … Do not submit sensitive, confidential, or personal information to the Unpaid Services."*
+
+## 5. Music and SFX (D-08, recommended, owner to confirm)
+
+| Source | Licence | Commercial? | Conditions | Status |
+|---|---|---|---|---|
+| **Kevin MacLeod / incompetech** | CC BY 4.0 | Yes | Credit in the description: `"Title" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 http://creativecommons.org/licenses/by/4.0/` | **recommended (music)** |
+| **Freesound, CC0 (and CC BY with credit)** | Per file | CC0 / CC BY yes; **BY-NC and Sampling+ no** | Record each file's ID and licence here | **recommended (SFX)** |
+| Pixabay Music | Pixabay Content License | Yes | Content ID may flag legal use | fallback |
+| YouTube Audio Library | YouTube terms | On YouTube | Use off YouTube unverified | fallback |
+| Sonniss GDC bundles | Sonniss GDC Bundle Licence v2.0 | Yes | **"No AI Training or Usage"** clause covers AI development | avoid |
+| Epidemic Sound | Subscription | Paid only | The free API tier is prototyping-only | avoid (paid) |
+
+Per-track and per-file rows get added here when an asset is chosen (M5).
+
+## 6. Open items
 
 - **PanelWeaver's own licence:** the repo is public but has **no LICENSE file**, which means "all rights reserved". Owner decision (not blocking M0).
 - Unverified items to resolve before first use: Real-ESRGAN anime weights, the PaddleOCR-VL-For-Manga CER claim, the ERNIE base licence, and Manga109-s eligibility for an individual.
