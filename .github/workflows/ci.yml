@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
       - name: Install ffmpeg
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
-      - run: pip install -e ".[dev]"
+      - run: pip install -e ".[dev,cv]"
       - run: ruff check .
       - run: ruff format --check .
       - name: Validate eval annotations

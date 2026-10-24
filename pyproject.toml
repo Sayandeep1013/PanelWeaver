@@ -18,6 +18,11 @@ dev = [
     "ruff>=0.6",
 ]
 
+cv = [
+    "numpy>=1.26",
+    "opencv-python-headless>=4.9",
+]
+
 [project.scripts]
 panelweaver = "panelweaver.cli:main"
 
