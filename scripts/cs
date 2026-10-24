@@ -12,7 +12,7 @@
 #   scripts/cs get <path> [dest]    copy a file from the repo in the codespace to ./pull/
 #   scripts/cs stop                 stop the codespace (saves free hours)
 #
-# Any command wakes a stopped codespace first (about a minute).
+# Any command wakes a stopped codespace first (about 20 s).
 # PW_CODESPACE=<name> picks one when there are several.
 set -euo pipefail
 

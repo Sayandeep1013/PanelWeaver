@@ -120,7 +120,7 @@ PC  D:\Projects\PanelWeaver  ── edit, commit ──►  GitHub  ◄── gi
 - **Never run two Claude sessions on this repo at once** (PC + phone). They will conflict.
 
 ### 3.2 The PC setup: `scripts/cs`
-The local session drives the codespace with `scripts/cs` (bash; run it from the repo root with the Bash tool). It finds the codespace by repo, and any command wakes a stopped codespace (about a minute):
+The local session drives the codespace with `scripts/cs` (bash; run it from the repo root with the Bash tool). It finds the codespace by repo, and any command wakes a stopped codespace (measured: 18 s from fully stopped to command done):
 
 | Command | Does |
 |---|---|
