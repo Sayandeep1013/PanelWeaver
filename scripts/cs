@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# Drive PanelWeaver's codespace from a local checkout (the "local driver"
+# setup in docs/BUILD_GUIDE.md §3). Code is edited locally and synced through
+# GitHub; everything heavy runs in the codespace.
+#
+#   scripts/cs status               the codespace and its state
+#   scripts/cs run "<cmd>"          run in /workspaces/PanelWeaver, wait for it
+#   scripts/cs sync                 pull, push local commits, pull them in the codespace
+#   scripts/cs job <name> "<cmd>"   start a long job detached; log in logs/<name>.log
+#   scripts/cs log <name> [lines]   tail a job's log
+#   scripts/cs jobs                 running jobs
+#   scripts/cs get <path> [dest]    copy a file from the repo in the codespace to ./pull/
+#   scripts/cs stop                 stop the codespace (saves free hours)
+#
+# Any command wakes a stopped codespace first (about a minute).
+# PW_CODESPACE=<name> picks one when there are several.
+set -euo pipefail
+
+REPO=Sayandeep1013/PanelWeaver
+ROOT=/workspaces/PanelWeaver
+
+cs_name() {
+  local name=${PW_CODESPACE:-$(gh codespace list -R "$REPO" --json name -q '.[0].name')}
+  if [ -z "$name" ]; then
+    echo "No codespace for $REPO. Create one:" >&2
+    echo "  gh codespace create -R $REPO -b main -m basicLinux32gb --idle-timeout 4h --retention-period 720h" >&2
+    exit 1
+  fi
+  echo "$name"
+}
+
+# Commands travel base64-encoded: no quoting layer between here and the
+# remote login shell can mangle them.
+b64() { printf '%s' "$1" | base64 -w0; }
+
+remote() {
+  gh codespace ssh -c "$(cs_name)" -- "bash -lc \"\$(echo $(b64 "cd $ROOT && $1") | base64 -d)\" < /dev/null"
+}
+
+cmd=${1:-}
+shift || true
+case "$cmd" in
+  status)
+    gh codespace list -R "$REPO"
+    ;;
+  run)
+    remote "$1"
+    ;;
+  sync)
+    git pull --ff-only
+    git push
+    remote "git pull --ff-only && git log --oneline -1"
+    ;;
+  job)
+    name=$1
+    # The job runs from its own script file; setsid + nohup keep it running
+    # after the ssh session ends.
+    remote "mkdir -p logs && echo $(b64 "$2") | base64 -d > logs/$name.sh && setsid nohup bash -l logs/$name.sh > logs/$name.log 2>&1 < /dev/null & echo 'started $name (logs/$name.log)'"
+    ;;
+  log)
+    remote "tail -n ${2:-40} logs/$1.log"
+    ;;
+  jobs)
+    remote "pgrep -af '^bash -l logs/' || echo 'no jobs running'"
+    ;;
+  get)
+    mkdir -p pull
+    gh codespace cp -c "$(cs_name)" -e "remote:$ROOT/$1" "${2:-pull/}"
+    ;;
+  stop)
+    gh codespace stop -c "$(cs_name)"
+    ;;
+  *)
+    sed -n '2,19p' "$0" | sed 's/^# \{0,1\}//'
+    exit 1
+    ;;
+esac

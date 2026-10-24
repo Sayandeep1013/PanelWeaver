@@ -23,3 +23,10 @@ models/
 *.safetensors
 *.pt
 *.pth
+
+# scripts/cs: job logs in the codespace, previews copied to the PC
+logs/
+pull/
+
+# Local agent state
+.sisyphus/
